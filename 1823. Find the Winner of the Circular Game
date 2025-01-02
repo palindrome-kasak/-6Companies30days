@@ -1,0 +1,22 @@
+class Solution {
+    public int findTheWinner(int n, int k) {
+        // create a Arraylist 
+         ArrayList<Integer> persons = new ArrayList<>();
+         for(int i=1;i<=n;i++){
+            persons.add(i);
+         }
+
+        int i=0;
+       while(persons.size()>1){
+        // curent remove ind
+        int remove = i+k;
+        // in circular motion
+            int ind=(remove-1)%persons.size();
+            i=ind;
+            System.out.println("next index value :" + ind);
+            persons.remove(ind);
+        }
+
+        return persons.get(persons.size()-1);
+    }
+}
