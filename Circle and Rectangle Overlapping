@@ -1,0 +1,70 @@
+class Solution {
+    public boolean checkOverlap(int radius, int xCenter, int yCenter, int x1, int y1, int x2, int y2) {
+        /**
+        
+        
+        
+         */
+        // int a1 = x2;
+        // int b1 = y1;
+        // int a2 = x1;
+        // int b2 = y2;
+
+        // // case when center belongs inside the rectangle
+        // if (xCenter >= x1 && xCenter <= x2 && yCenter >= y1 && yCenter <= y2) {
+        //     return true;
+        // }
+
+        // System.out.println("values of: x1 y1 is " + "(" + x1 + "," + y1 + ")");
+        // System.out.println("values of: x2 y2 is " + "(" + x2 + "," + y2 + ")");
+        // System.out.println("values of: a1 b1 is " + "(" + a1 + "," + b1 + ")");
+        // System.out.println("values of: a2 b2 is " + "(" + a2 + "," + b2 + ")");
+
+        // mujhe kya chahiye ?
+        // mujhe rectangle ki surface par 1 point aisa chaiye jiska distance from orgin
+        // is equal or less than radisus ho ?
+        // from ( (x1,y1) to (a2,b2) , (a2,b2) to (x2,y2) , (x2,y2) to (a1,b1) , (x1,y1)
+        // to (a1,b1))
+
+        // from x1,y1 to a1,b1 => y1 is common , x is getting changes
+        // for (int i = x1; i <= a1; i++) {
+        //     double distance = Math.sqrt(Math.pow(i - xCenter, 2) + Math.pow(y1 - yCenter, 2));
+        //     if (distance <= radius) {
+        //         return true;
+        //     }
+        // }
+
+        // // for x1,y1 to a2,b2 , x is common , y is getting changes
+        // for (int i = y1; i <= b2; i++) {
+        //     double distance = Math.sqrt(Math.pow(i - xCenter, 2) + Math.pow(x1 - yCenter, 2));
+        //     if (distance <= radius) {
+        //         return true;
+        //     }
+        // }
+        // // (a2,b2) to (x2,y2) y is com , x is getting change
+        // for (int i = a2; i <= x2; i++) {
+        //     double distance = Math.sqrt(Math.pow(i - xCenter, 2) + Math.pow(b2 - yCenter, 2));
+        //     if (distance <= radius) {
+        //         return true;
+        //     }
+        // }
+        // // (x2,y2) to (a1,b1) , x is com and y is cahnage
+        // for (int i = b1; i <= y2; i++) {
+        //     double distance = Math.sqrt(Math.pow(i - xCenter, 2) + Math.pow(x2 - yCenter, 2));
+        //     if (distance <= radius) {
+        //         return true;
+        //     }
+        // }
+        // return false;
+
+
+        int closestX = Math.max(x1, Math.min(xCenter, x2));
+        int closestY = Math.max(y1, Math.min(yCenter, y2));
+        
+        // Calculate the distance from the circle center to the closest point
+        double distance = Math.sqrt(Math.pow(xCenter - closestX, 2) + Math.pow(yCenter - closestY, 2));
+        
+        // Check if the distance is within the circle's radius
+        return distance <= radius;
+    }
+}
