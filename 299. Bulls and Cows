@@ -1,0 +1,47 @@
+class Solution {
+    public String getHint(String secret, String guess) {
+        /**
+        noOfBulls : 
+        find the same value at same position in both secret and guess 
+        
+         */
+
+int n = secret.length();
+         int nBull =0;
+         for(int i=0;i<n;i++){
+            if(secret.charAt(i)==guess.charAt(i)){
+                nBull++;
+            }
+         }
+         System.out.println("no of bulls: "+ nBull);
+
+         int TotalCommonChar =commmonChar(secret,guess);
+
+         int nCow =TotalCommonChar-nBull;
+
+
+     System.out.println("no of cows: "+ nCow);
+
+
+
+     return nBull+"A"+nCow+"B";
+
+         
+    }
+    public static int commmonChar(String str1 , String str2){
+        HashMap<Character , Integer > charFreq = new HashMap<>();
+int commonChar=0;
+        for(char c : str1.toCharArray()){
+            charFreq.put(c,charFreq.getOrDefault(c,0)+1);
+        }
+        for(char c: str2.toCharArray()){
+            if(charFreq.containsKey(c)&& charFreq.get(c)>0){
+                commonChar++;
+                   charFreq.put(c, charFreq.get(c) - 1);
+            }
+        }
+        
+  return commonChar;
+    }
+  
+}
