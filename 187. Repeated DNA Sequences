@@ -1,0 +1,33 @@
+class Solution {
+    public List<String> findRepeatedDnaSequences(String s) {
+        /**
+         * s = "AAAAACCCCCAAAAACCCCCCAAAAAGGGTTT"
+         * 
+         * looks like a sliding window proble
+         * window of 10 letter
+         * 
+         */
+        List<String> ans = new ArrayList<>();
+        int n = s.length();
+        int i = 0;
+        int j = 10;
+        HashMap<String, Integer> mp = new HashMap<>();
+
+        while (j <= n) {
+            String s1 = s.substring(i, j);
+            i++;
+            j++;
+            // if (mp.containsKey(s1)) {
+            //     ans.add(s1);
+            // }
+            mp.put(s1, mp.getOrDefault(s1, 0) + 1);
+        }
+
+        for(Map.Entry<String, Integer> entry : mp.entrySet()){
+            if (entry.getValue()>=2){
+                ans.add(entry.getKey());
+            }
+        }
+        return ans;
+    }
+}
